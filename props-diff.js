@@ -7,6 +7,8 @@ let file2 = null;
 let nameColumnIndex = 0;
 let valueColumnIndex = 0;
 
+const SENSITIVE_KEYS = /[Pp]assword|[Ss]ecret/;
+
 /** @type {Map<String, [String, String]>} */
 const valuesByPropertyName = new Map();
 
@@ -58,7 +60,7 @@ function generateOutputFile() {
 
     const result = [];
     for (const name of names) {
-        const [value1, value2] = valuesByPropertyName.get(name);
+        const [value1, value2] = checkForSensitiveData(name, valuesByPropertyName.get(name));
         result.push(`"${name}": ["${value1}", "${value2}"],`);
     }
 
@@ -69,6 +71,10 @@ function generateOutputFile() {
         .replace("$FILE2", file2);
 
     fs.writeFileSync("output.html", output);
+}
+
+function checkForSensitiveData(name, values) {
+    return SENSITIVE_KEYS.test(name) ? ["removed", "removed"] : values;
 }
 
 function fatal(msg) {
