@@ -1,7 +1,7 @@
 
 # props-diff
 
-Compares two files containing properties and shows an HTML summary of the comparison.
+Compares two TSV files containing properties and shows an HTML summary of the comparison, highligthing fields that differ and that are also missing.
 
 Assumptions:
 
