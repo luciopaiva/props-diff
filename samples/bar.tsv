@@ -1,0 +1,5 @@
+numberOfProcessesToSpawn	20
+pathToConfigFile	/etc/foo/sample.conf
+maximumNumberOfClients	200000
+toggleInternalLogging	false
+incomingBufferSizeInBytes	2048
