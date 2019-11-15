@@ -67,8 +67,8 @@ function generateOutputFile() {
     const templateFile = fs.readFileSync("index.html", "utf-8");
     const output = templateFile
         .replace("$RESULT", result.join("\n"))
-        .replace("$FILE1", file1)
-        .replace("$FILE2", file2);
+        .replace("$LEFT", file1)
+        .replace("$RIGHT", file2);
 
     fs.writeFileSync("output.html", output);
 }
